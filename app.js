@@ -13,11 +13,10 @@ app.route("/").get(function (req, res) {
   res.sendFile(process.cwd() + "/static/gym.html");
 });
 
-app.post("/", (req, res) => {
+app.post("/send", (req, res) => {
    const smtpTrans = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
-    secure: true,
     auth: {
       user: 'parth.gupta023@nmims.edu.in',
       pass: '@Parth1001'
@@ -42,5 +41,5 @@ app.post("/", (req, res) => {
 });
 
 app.listen(process.env.PORT || 3000, function() {
-    console.log(`The application started successfully on port 3000`);
+    console.log("The application started successfully on port 3000");
 });

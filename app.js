@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer');
 const app = express();
 
 app.use('/static',express.static(process.cwd() + '/static'))
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyparser.urlencoded({extended: true}))
 
 app.route("/").get(function (req, res) {
   res.sendFile(process.cwd() + "/static/gym.html");

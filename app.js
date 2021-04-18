@@ -1,14 +1,12 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-const app = express();
 const bodyparser = require("body-parser");
-// const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
-// const multiparty = require("multiparty");
 require("dotenv").config();
 
-app.use(express.urlencoded()); 
+const app = express();
+
 app.use('/static',express.static('static'))
 app.use(bodyParser.urlencoded({extended: true}))
 
@@ -16,7 +14,7 @@ app.get('/', (req, res)=>{
     res.sendFile(__dirname + "/gym.html");
 })
 
-app.post("/", (req, res) => {
+app.post("/send", (req, res) => {
    const smtpTrans = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
@@ -34,7 +32,7 @@ app.post("/", (req, res) => {
     text: `Name : ${req.body.name}, Age : ${req.body.age},\nGender : ${req.body.gender}, Mobno. : ${req.body.mob},\nEmail : ${req.body.email}, \nWeight : ${req.body.weight}, Height : ${req.body.height}`
   }
 
-  smtpTrans.sendMail(mailOpts, (error, response) => {
+  smtpTrans.sendMail(mailOpts, (err, response) => {
     if (err) {
         console.log(err);
         res.status(500).send("Something went wrong.");

@@ -3,18 +3,17 @@ const path = require("path");
 const fs = require("fs");
 const bodyparser = require("body-parser");
 const nodemailer = require('nodemailer');
-require("dotenv").config();
 
 const app = express();
 
-app.use('/static',express.static('static'))
+app.use('/static',express.static(process.cwd() + '/static'))
 app.use(bodyParser.urlencoded({extended: true}))
 
-app.get('/', (req, res)=>{
-    res.sendFile(__dirname + "/gym.html");
-})
+app.route("/").get(function (req, res) {
+  res.sendFile(process.cwd() + "/static/gym.html");
+});
 
-app.post("/send", (req, res) => {
+app.post("/", (req, res) => {
    const smtpTrans = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
@@ -26,7 +25,7 @@ app.post("/send", (req, res) => {
   });
 
   const mailOpts = {
-    from: 'parth.gupta023@nmims.edu.in', // This is ignored by Gmail
+    from: 'parth.gupta023@nmims.edu.in', 
     to: 'parth.gupta023@nmims.edu.in',
     subject: 'New Form Filled!',
     text: `Name : ${req.body.name}, Age : ${req.body.age},\nGender : ${req.body.gender}, Mobno. : ${req.body.mob},\nEmail : ${req.body.email}, \nWeight : ${req.body.weight}, Height : ${req.body.height}`
@@ -42,7 +41,6 @@ app.post("/send", (req, res) => {
   });
 });
 
-PORT = process.env.PORT || 3000;
-app.listen(PORT, ()=>{
+app.listen(process.env.PORT || 3000, function() {
     console.log(`The application started successfully on port 3000`);
 });

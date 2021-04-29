@@ -44,9 +44,9 @@ app.post("/send", (req, res) => {
 
   smtpTrans.sendMail(mailOpts, (err, response) => {
     if (response.statusCode === 200){
-      res.sendFile(__dirname + "/static/success.html");
-    } else{
       res.sendFile(__dirname + "/static/failure.html");
+    } else{
+      res.sendFile(__dirname + "/static/success.html");
     }
   });
 });

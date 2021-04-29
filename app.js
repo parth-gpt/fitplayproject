@@ -21,7 +21,9 @@ app.route("/connect").get(function (req, res) {
   res.sendFile(process.cwd() + "/static/connect.html");
 
 });
-
+app.post("/faliure", function(req,res){
+  res.redirect("/connect");
+});
 
 app.post("/send", (req, res) => {
    const smtpTrans = nodemailer.createTransport({

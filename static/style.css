@@ -1,0 +1,93 @@
+ *{
+     margin: 0;
+     padding: 0;
+ }
+ body {
+  
+  background-color: black;
+  /* background-image: url(/static/gym.jpg); */
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
+}
+.logo{
+    width: 250px;
+}
+.navbar{
+    background-color: transparent !important;
+}
+.nav-link{
+    color: whitesmoke !important;
+}
+.top{
+    font-size: 22px;
+    font-family: 'Anonymous Pro', monospace;
+    /* font-family: 'Megrim', cursive; */
+    /* font-family: 'Orbitron', sans-serif; */
+    letter-spacing: 2px;
+}
+.cus{
+    position: relative;
+    left: 40px;
+}
+.cus:hover{
+    color: rgba(212, 104, 85, 0.363) !important;
+}
+.aus:hover{
+    color: rgba(212, 104, 85, 0.363) !important;
+}
+.h1{
+    color: whitesmoke;
+    font-family: 'Megrim', cursive;
+    font-size: 45px;
+    padding-left: 20px;
+}
+.card{
+    margin: 20px;
+    background-color: black;
+}
+.card-text{
+    font-size: 25px !important;
+    /* font-family: 'Playfair Display', serif; */
+    font-family: 'Anonymous Pro', monospace;
+    word-spacing: 1px;
+    letter-spacing: 1px;
+    color: rgba(233, 233, 233, 0.801);
+}
+span{
+    font-weight: 1000px;
+    color: rgba(212, 104, 85, 0.589);
+}
+.btn{
+    background-color: black;
+    border-color: rgba(212, 104, 85, 0.589);
+    font-family:'Anonymous Pro', monospace ;
+    font-weight: bolder;
+}
+.btn:hover{
+    background-color: rgba(32, 32, 32, 0.781);
+    border-color: rgba(212, 104, 85, 0.589);
+}
+.ausp{
+    position: relative;
+    left: 40px;
+}
+form{
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+}
+label{
+    color:rgba(212, 104, 85, 0.589);
+    font-family: 'Anonymous Pro', monospace ;
+    font-size: 18px;
+}
+.a{
+    background-color: black !important;
+    border-color:rgba(65, 65, 65, 0.925) ;
+    color:aliceblue !important;
+}
+.cf{
+    color: rgba(212, 104, 85, 0.589);
+    font-family: 'Anonymous Pro', monospace ;
+}

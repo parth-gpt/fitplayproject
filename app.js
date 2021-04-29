@@ -13,10 +13,20 @@ app.route("/").get(function (req, res) {
   res.sendFile(process.cwd() + "/static/gym.html");
 });
 
+app.route("/about").get(function (req, res) {
+  res.sendFile(process.cwd() + "/static/about.html");
+});
+
+app.route("/connect").get(function (req, res) {
+  res.sendFile(process.cwd() + "/static/connect.html");
+
+});
+
+
 app.post("/send", (req, res) => {
    const smtpTrans = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 465,
+    port: 587,
     auth: {
       user: 'parth.gupta023@nmims.edu.in',
       pass: '@Parth1001'
@@ -24,18 +34,17 @@ app.post("/send", (req, res) => {
   });
 
   const mailOpts = {
-    from: 'parth.gupta023@nmims.edu.in', 
+    from: 'parth.gupta023@nmims.edu.in',
     to: 'parth.gupta023@nmims.edu.in',
     subject: 'New Form Filled!',
-    text: `Name : ${req.body.name}, Age : ${req.body.age},\nGender : ${req.body.gender}, Mobno. : ${req.body.mob},\nEmail : ${req.body.email}, \nWeight : ${req.body.weight}, Height : ${req.body.height}`
+    text: `Name : ${req.body.name}, Age : ${req.body.age},\nGender : ${req.body.gender},\nAddress: ${req.body.address1}\n${req.body.address2} \nMobno. : ${req.body.mob},\nEmail : ${req.body.email}, \nWeight : ${req.body.weight}, Height : ${req.body.height}`
   }
 
   smtpTrans.sendMail(mailOpts, (err, response) => {
-    if (err) {
-        console.log(err);
-        res.status(500).send("Something went wrong.");
-      } else {
-        res.status(200).send("Email successfully sent to recipient!");
+    if (response.statusCode === 200){
+      res.sendFile(__dirname + "/static/success.html");
+    } else if (response.statusCode === 500){
+      res.sendFile(__dirname + "/static/failure.html");
     }
   });
 });

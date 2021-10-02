@@ -30,8 +30,8 @@ app.post("/send", (req, res) => {
     host: 'smtp.gmail.com',
     port: 587,
     auth: {
-      user: 'parth.gupta023@nmims.edu.in',
-      pass: '@Parth1001'
+      user: 'user_email',
+      pass: 'user_password'
     }
   });
 
